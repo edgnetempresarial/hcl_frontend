@@ -1,0 +1,94 @@
+
+<div class="container">
+<h1>Welcome {{user.firstName}}!</h1>
+Here are some of the Events in your state
+<table class="tbl" style="width:100%;border: 2px solid black;">
+  <thead>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Host</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of allevents">
+      <td><a routerLink="/event/{{event.id}}" >{{event.name}}
+      </a></td>
+      <td>{{event.date}}</td>
+      <td>{{event.location}}</td>
+      <td>{{event.host.firstName}}</td>
+      <td>
+          <button type="button" class="btn btn-link" *ngIf="event.host.id == user.id">Edit</button>
+          <button type="button" class="btn btn-link" *ngIf="event.host.id == user.id" (click)="deleteEvent(event.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+Here are some of the Events in other states
+<table class="tbl" style="width:100%;border: 2px solid black;">
+  <thead>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>State</th>
+    <th>Host</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of alleventselsewhere">
+      <td><a routerLink="/event/{{event.id}}" >{{event.name}}
+      </a></td>
+      <td>{{event.date}}</td>
+      <td>{{event.location}}</td>
+      <td>{{event.state.name}}</td>
+      <td>{{event.host.firstName}}</td>
+      <td>
+        Join
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+    <div class="col-12">
+      <h2>Create an Event</h2>
+    </div>
+    <div class="col-6">
+      <table style="width:100%;">
+        <tr>
+          <td style="width:200px">Name</td>
+          <td>
+            <input type="text" [(ngModel)]="newEvent.name">
+          </td>
+        </tr>
+        <tr>
+          <td style="width:200px">Date</td>
+          <td>
+            <input type="date" [(ngModel)]="newEvent.date">
+          </td>
+        </tr>
+        <tr>
+          <td style="width:200px">Name</td>
+          <td>
+              <div class="controls">
+                  <input type="text" class="input-xlarge" [(ngModel)]="newEvent.location">
+                  <select [(ngModel)]="newEvent.stateId">
+                    <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+                  </select>
+                </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+              <div class="control-group">
+                  <!-- Button -->
+                  <div class="controls text-right">
+                    <button class="btn btn-success" (click)="addEvent()">Create Event</button>
+                  </div>
+                </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

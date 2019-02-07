@@ -1,0 +1,91 @@
+<div class="container">
+<div class="row">
+<div class="col-6">
+        
+    <div class="control-group">
+        <label class="control-label" >Email</label>
+        <div class="controls">
+          <input type="text"  class="input-xlarge" [(ngModel)]="user.email">
+        </div>
+</div>
+
+      <div class="control-group">
+                <label class="control-label" >First Name</label>
+                <div class="controls">
+                  <input type="text"  class="input-xlarge" [(ngModel)]="user.firstName">
+                </div>
+      </div>
+      
+
+      <div class="control-group">
+          <label class="control-label" >Last Name</label>
+          <div class="controls">
+            <input type="text"  class="input-xlarge" [(ngModel)]="user.lastName">
+          </div>
+        </div>
+      
+
+
+    <div class="control-group">
+        <label class="control-label" >Location</label>
+        <div class="controls">
+          <input type="text" placeholder="" class="input-xlarge" [(ngModel)]="user.location">
+          <select [(ngModel)]="user.state">
+            <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
+          </select>
+        </div>
+      </div>
+    
+
+      <div class="control-group">
+          <label class="control-label" >Password</label>
+          <div class="controls">
+            <input type="password"  class="input-xlarge" [(ngModel)]="user.password">
+          </div>
+        </div>
+
+
+
+        <div class="control-group">
+            <!-- Button -->
+            <div class="controls">
+              <button class="btn btn-success" (click)="register()">Login</button>
+            </div>
+          </div>
+
+</div>
+<div class="col-6">
+  <div class="span12">
+    <form class="form-horizontal" action='' method="POST">
+      <fieldset>
+        <div id="legend">
+          <legend class="">Login</legend>
+        </div>
+        <div class="control-group">
+          <!-- Username -->
+          <label class="control-label"  for="username">Email</label>
+          <div class="controls">
+            <input type="text" id="username" name="username" placeholder="" class="input-xlarge" [(ngModel)]="email">
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- Password-->
+          <label class="control-label" for="password">Password</label>
+          <div class="controls">
+            <input type="password" id="password" name="password" placeholder="" [(ngModel)]="password"  class="input-xlarge">
+          </div>
+        </div>
+        <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button class="btn btn-success" (click)="login()">Login</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+</div>
+</div>
+     

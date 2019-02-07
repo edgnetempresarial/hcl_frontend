@@ -1,0 +1,54 @@
+
+<div *ngIf="event != null" class="container">
+    <h2> {{event.name}} </h2>
+  <div class="row">
+    <div class="col-6">
+      <table style="width:80%">
+        <tr>
+          <td>Host:</td>
+          <td>{{event.host.firstName}} {{event.host.lastName}}</td>
+        </tr>
+        <tr>
+            <td>Date:</td>
+            <td>{{formatDate(event.date)}}</td>
+        </tr>
+        <tr>
+            <td>Location:</td>
+            <td>{{event.location}}</td>
+        </tr>
+      </table>
+      <br>
+      People who are attending this event {{members.length}}
+      <div class="row">
+          <div class="col">
+            <table style="width:100%; border: 3px solid black;">
+              <thead>
+                <th>Name</th>
+                <th>Location</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let member of members">
+                  <td>{{member.FIRST_NAME}}</td>
+                  <td>{{member.LOCATION}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+    <div class="col-6">
+        <table style="width:100%; border: 3px solid black;">
+          <tr *ngFor="let message of messages" style="border-bottom: 1px solid black;">
+            <td style="text-align: right;">{{message.user.firstName}}:</td>
+            <td style="width:70%;">{{message.message}}</td>
+          </tr>
+        </table>
+        <div>
+          Add Coment:  
+          <input type="text" [(ngModel)]="newMessage">
+          <button (click)="submitMessage()">Submit</button>
+        </div>
+      </div>
+  </div>
+  
+</div>

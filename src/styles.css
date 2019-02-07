@@ -1,0 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
+.tbl * tr:nth-child(even) {background: #DDD}
+.tbl * tr:nth-child(odd) {background: #FFF}
+.tbl * th {background: #abc}
